@@ -5,10 +5,10 @@ public class Book {
     private String BookName;
     private String BookAuthor;
 
-    public static ArrayList<Book> bookList = new ArrayList<Book>();
+    public static ArrayList<Book> BOOKLIST = new ArrayList<Book>();
     static {
-        bookList.add(0,new Book("j1","Head First Java", "Kethy Sieria"));
-        bookList.add(0,new Book("p1","Let Us C", "Dennis Richie"));
+        BOOKLIST.add(0, new Book("j1", "Head First Java", "Kethy Sieria"));
+        BOOKLIST.add(0, new Book("p1", "Let Us C", "Dennis Richie"));
     }
 
     private Book(String id, String name, String author){
@@ -39,11 +39,13 @@ public class Book {
         return result;
     }
 
-    public ArrayList<String> Display() {
-        ArrayList<String> book = new ArrayList<String>();
-        book.add(this.BookId);
-        book.add(this.BookName);
-        book.add(this.BookAuthor);
-        return book;  //To change body of created methods use File | Settings | File Templates.
+    public String Display() {
+        StringBuffer book=new StringBuffer();
+        book.append(this.BookId);
+        book.append(" ");
+        book.append(this.BookName);
+        book.append(" ");
+        book.append(this.BookAuthor);
+        return book.toString();  //To change body of created methods use File | Settings | File Templates.
     }
 }

@@ -4,7 +4,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class testBook {
-    ArrayList BookList= Book.bookList;
+    ArrayList BookList= Book.BOOKLIST;
     @Test
     public void testBookEqual(){
         Book java1 = (Book) BookList.get(0);
@@ -20,11 +20,9 @@ public class testBook {
     @Test
     public void testDisplay(){
         Book J1= (Book) BookList.get(1);
-        ArrayList<String> ExpectedOutput=new ArrayList<String>();
-            ExpectedOutput.add("j1");
-            ExpectedOutput.add("Head First Java");
-            ExpectedOutput.add("Kethy Sieria");
-        ArrayList<String> BookDisplayed= J1.Display();
+        String ExpectedOutput=new String();
+        ExpectedOutput="j1"+" Head First Java"+" Kethy Sieria";
+        String BookDisplayed= J1.Display();
         Assert.assertEquals(ExpectedOutput,BookDisplayed);
     }
 }
