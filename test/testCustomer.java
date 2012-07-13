@@ -26,8 +26,8 @@ public class testCustomer {
 
     @Test
     public void testVerifyCustomer(){
-        //Book J1=customerList.get(1);
-        Assert.assertTrue(J1.IsBook("Head First Java"));
+        Customer customer=customerList.get(1);
+        Assert.assertTrue(customer.IsCustomer(2));
     }
 
 }
