@@ -48,4 +48,18 @@ public class Book {
         book.append(this.BookAuthor);
         return book.toString();  //To change body of created methods use File | Settings | File Templates.
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "BookId='" + BookId + '\'' +
+                ", BookName='" + BookName + '\'' +
+                ", BookAuthor='" + BookAuthor + '\'' +
+                '}';
+    }
+
+    public boolean IsBook(String BookName) {
+        if(! this.BookName.equalsIgnoreCase(BookName)) return false;
+        return true;  //To change body of created methods use File | Settings | File Templates.
+    }
 }

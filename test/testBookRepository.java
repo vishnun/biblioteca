@@ -19,4 +19,12 @@ public class testBookRepository {
         booksDiaplayed.add("j1"+" Head First Java"+" Kethy Sieria");
         Assert.assertEquals(booksDiaplayed,bookRepository.DisplayAllBooks());
     }
+    @Test
+    public void testGetBook(){
+        ArrayList<Book> booksAvailable=BookRepository.BookList;
+        BookRepository bookRepository=new BookRepository();
+        Book bookReturned=bookRepository.GetBook("Head First Java");
+        Book ActualBook=booksAvailable.get(1);
+        Assert.assertEquals(ActualBook,bookReturned);
+    }
 }
