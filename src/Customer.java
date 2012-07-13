@@ -34,15 +34,11 @@ public class Customer {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Customer customer = (Customer) o;
-
+    public boolean equals(Object otherCustomer) {
+        if (this == otherCustomer) return true;
+        if (otherCustomer == null || getClass() != otherCustomer.getClass()) return false;
+        Customer customer = (Customer) otherCustomer;
         if (id != customer.id) return false;
-        if (Name != null ? !Name.equals(customer.Name) : customer.Name != null) return false;
-
         return true;
     }
 

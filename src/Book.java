@@ -18,16 +18,12 @@ public class Book {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Book book = (Book) o;
-
+    public boolean equals(Object otherBook) {
+        if (otherBook == null || getClass() != otherBook.getClass()) return false;
+        Book book = (Book) otherBook;
         if (BookAuthor != null ? !BookAuthor.equals(book.BookAuthor) : book.BookAuthor != null) return false;
         if (BookId != null ? !BookId.equals(book.BookId) : book.BookId != null) return false;
         if (BookName != null ? !BookName.equals(book.BookName) : book.BookName != null) return false;
-
         return true;
     }
 
