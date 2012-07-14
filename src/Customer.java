@@ -11,10 +11,8 @@ public class Customer {
 
     public String GetBookName(Console console) throws IOException {
         String msg="Enter Book Name: ";
-        String b="Head First Java";
         console.println(msg);
-        console.println(b);
-        return "Head First Java";
+        return console.GetUserInput();
     }
 
     @Override
@@ -42,5 +40,10 @@ public class Customer {
 
     public boolean IsCustomer(int CustomerId) {
         return this.id == CustomerId;
+    }
+
+    public int GetCustomerId(String userName) {
+         if(this.Name.equals(userName)) return this.id;
+        return -1;
     }
 }

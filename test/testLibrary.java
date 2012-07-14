@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class testLibrary {
     private int OPTION_SHOWALLBOOKS=1;
     private int OPTION_RESERVEBOOK=2;
-    private int OPTION_VERIFYLIBRARYCARD=3;
+    private int OPTION_VERIFYLIBRARYNUMBER=3;
     private int OPTION_EXIT=4;
     private int OPTION_INVALID=5;
     @Test
@@ -70,5 +70,23 @@ public class testLibrary {
         library.selectOption(OPTION_RESERVEBOOK,consolestub);//Reserve Book
         library.selectOption(OPTION_RESERVEBOOK,consolestub);//Again Reserve It : Should say already reserved
         Assert.assertEquals(NotAvailableMessage,consolestub.getLine(6));
+    }
+    @Test
+    public void testVerifyLibraryNumberSuccess(){
+        Library library=new Library();
+        ArrayList<String> InputListOrder=new ArrayList<String>();
+        InputListOrder.add("Vishnu Narang");
+        ConsoleStub consolestub=new ConsoleStub();
+        consolestub.InitializeInputSequence(InputListOrder);
+        library.selectOption(OPTION_VERIFYLIBRARYNUMBER,consolestub);
+        String YourIdReturned="1";
+        Assert.assertEquals(YourIdReturned,consolestub.getLine(2));
+    }
+    @Test
+    public void testExitMessage(){
+        Library library=new Library();
+        ConsoleStub consolestub=new ConsoleStub();
+        library.selectOption(OPTION_EXIT,consolestub);
+        Assert.assertEquals("Thank you. Visit again soon.",consolestub.getLine(1));
     }
 }

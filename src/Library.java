@@ -44,10 +44,13 @@ public class Library {
                 console.println(message);
                 break;
             case 3:
-                console.println("Valid Option");
+                console.println("Enter Your Name: ");
+                String userName=console.GetUserInput();
+                String librarianMessage=CustomerList.VerifyExistence(userName);
+                console.println(librarianMessage);
                 break;
             case 4:
-                console.println("Valid Option");
+                console.println("Thank you. Visit again soon.");
                 break;
             default:
                 console.println("Please select a Valid Option");
