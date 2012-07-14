@@ -2,6 +2,7 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class testLibrary {
     private int OPTION_SHOWALLBOOKS=1;
@@ -42,21 +43,43 @@ public class testLibrary {
         Assert.assertTrue(consolestub.getLine(1).equals("p1"+" Let Us C"+" Dennis Richie"));
         Assert.assertTrue(consolestub.getLine(2).equals("j1"+" Head First Java"+" Kethy Sieria"));
     }
+
     @Test
-    public void testReserveBookSuccessfullyOption() throws IOException {
+    public void testReserveBookSuccessfullyOption()  {
         Library library=new Library();
+        ArrayList<String> InputListOrder=new ArrayList<String>();
+        InputListOrder.add("Head First Java");
+        InputListOrder.add("1");
         ConsoleStub consolestub=new ConsoleStub();
+        consolestub.InitializeInputSequence(InputListOrder);
         String BookReservedSuccessfully="Your book has been Reserved Successfully";
-        library.selectOption(OPTION_RESERVEBOOK,consolestub);
+        try {
+            library.selectOption(OPTION_RESERVEBOOK,consolestub);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Assert.assertTrue(consolestub.getLine(3).equals(BookReservedSuccessfully));
     }
     @Test
-    public void testReserveBookFailedOption() throws IOException {
+    public void testReserveBookFailedOption() {
         Library library=new Library();
+        ArrayList<String> InputListOrder=new ArrayList<String>();
+        InputListOrder.add("Head First Java");
+        InputListOrder.add("1");
         ConsoleStub consolestub=new ConsoleStub();
+        consolestub.InitializeInputSequence(InputListOrder);
+
         String NotAvailableMessage="Book Not available at this moment.";
-        library.selectOption(OPTION_RESERVEBOOK,consolestub);//Reserve Book
-        library.selectOption(OPTION_RESERVEBOOK,consolestub);//Again Reserve It : Should say already reserved
+        try {
+            library.selectOption(OPTION_RESERVEBOOK,consolestub);//Reserve Book
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            library.selectOption(OPTION_RESERVEBOOK,consolestub);//Again Reserve It : Should say already reserved
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Assert.assertTrue(consolestub.getLine(6).equals(NotAvailableMessage));
     }
 }

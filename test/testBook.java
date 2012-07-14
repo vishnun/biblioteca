@@ -4,7 +4,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 public class testBook {
-    ArrayList BookList= Book.BOOKLIST;
+    ArrayList BookList= BookRepository.BookList;
     @Test
     public void testBookEqual(){
         Book java1 = (Book) BookList.get(0);

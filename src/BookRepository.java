@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 public class BookRepository {
-    public static ArrayList<Book> BookList=Book.BOOKLIST;
+    public static ArrayList<Book> BookList=new ArrayList<Book>();
+    static {
+        BookList.add(0, new Book("j1", "Head First Java", "Kethy Sieria"));
+        BookList.add(0, new Book("p1", "Let Us C", "Dennis Richie"));
+    }
 
     public ArrayList<String> DisplayAllBooks(){
         ArrayList<String> books=new ArrayList<String>();

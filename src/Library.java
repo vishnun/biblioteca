@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class Library {
@@ -24,10 +22,8 @@ public class Library {
                     console.println(listOfBook);
                 break;
             case 2:
-                BufferedReader UserIP=new BufferedReader(new InputStreamReader(System.in));
                 console.println("Enter The Book Name: ");
-                //String bookname=UserIP.readLine();      //For UserInput
-                String bookname="Head First Java";        //For Testing
+                String bookname=console.GetUserInput(1);
                 Book bookToReserve;
                 try{
                     bookToReserve=bookRepository.GetBook(bookname);
@@ -36,8 +32,7 @@ public class Library {
                     return;
                 }
                 console.println("Enter your Customer ID: ");
-                //String customerId=UserIP.readLine(); //For UserInput
-                String customerId="1";       //for Testing
+                String customerId=console.GetUserInput(2);
                 Customer customer=null;
                 try{
                     customer = RegisteredCustomers.GetCustomer(Integer.parseInt(customerId));

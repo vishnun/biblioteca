@@ -1,17 +1,9 @@
-import java.util.ArrayList;
-
 public class Book {
     private String BookId;
     private String BookName;
     private String BookAuthor;
 
-    public static ArrayList<Book> BOOKLIST = new ArrayList<Book>();
-    static {
-        BOOKLIST.add(0, new Book("j1", "Head First Java", "Kethy Sieria"));
-        BOOKLIST.add(0, new Book("p1", "Let Us C", "Dennis Richie"));
-    }
-
-    private Book(String id, String name, String author){
+    public Book(String id, String name, String author){
         this.BookId=id;
         this.BookName=name;
         this.BookAuthor=author;

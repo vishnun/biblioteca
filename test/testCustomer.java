@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class testCustomer {
-    ArrayList<Customer> customerList= Customer.CUSTOMERLIST;
+    ArrayList<Customer> customerList= CustomerList.customerList;
 
     @Test
     public void testCustomerEquality(){
