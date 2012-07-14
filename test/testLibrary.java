@@ -80,7 +80,7 @@ public class testLibrary {
         consolestub.InitializeInputSequence(InputListOrder);
         int OPTION_VERIFYLIBRARYNUMBER = 3;
         library.selectOption(OPTION_VERIFYLIBRARYNUMBER,consolestub);
-        String YourIdReturned="1";
+        String YourIdReturned="Your Customer Id is: 1";
         Assert.assertEquals(YourIdReturned,consolestub.getLine(2));
     }
     @Test
