@@ -53,11 +53,7 @@ public class testLibrary {
         ConsoleStub consolestub=new ConsoleStub();
         consolestub.InitializeInputSequence(InputListOrder);
         String BookReservedSuccessfully="Your book has been Reserved Successfully";
-        try {
-            library.selectOption(OPTION_RESERVEBOOK,consolestub);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        library.selectOption(OPTION_RESERVEBOOK,consolestub);
         Assert.assertTrue(consolestub.getLine(3).equals(BookReservedSuccessfully));
     }
     @Test
@@ -66,20 +62,13 @@ public class testLibrary {
         ArrayList<String> InputListOrder=new ArrayList<String>();
         InputListOrder.add("Head First Java");
         InputListOrder.add("1");
+        InputListOrder.add("Head First Java");
+        InputListOrder.add("1");
         ConsoleStub consolestub=new ConsoleStub();
         consolestub.InitializeInputSequence(InputListOrder);
-
         String NotAvailableMessage="Book Not available at this moment.";
-        try {
-            library.selectOption(OPTION_RESERVEBOOK,consolestub);//Reserve Book
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        try {
-            library.selectOption(OPTION_RESERVEBOOK,consolestub);//Again Reserve It : Should say already reserved
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Assert.assertTrue(consolestub.getLine(6).equals(NotAvailableMessage));
+        library.selectOption(OPTION_RESERVEBOOK,consolestub);//Reserve Book
+        library.selectOption(OPTION_RESERVEBOOK,consolestub);//Again Reserve It : Should say already reserved
+        Assert.assertEquals(NotAvailableMessage,consolestub.getLine(6));
     }
 }

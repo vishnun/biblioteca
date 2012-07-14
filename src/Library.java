@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Library {
@@ -14,7 +13,7 @@ public class Library {
         menu.Display(console);
     }
 
-    public void selectOption(int option, Console console) throws IOException {
+    public void selectOption(int option, Console console) {
         switch (option){
             case 1:
                 ArrayList <String> listOfBooks=bookRepository.DisplayAllBooks();
@@ -23,7 +22,8 @@ public class Library {
                 break;
             case 2:
                 console.println("Enter The Book Name: ");
-                String bookname=console.GetUserInput(1);
+                String bookname=console.GetUserInput();
+                //String bookname="Head First Java";
                 Book bookToReserve;
                 try{
                     bookToReserve=bookRepository.GetBook(bookname);
@@ -32,7 +32,8 @@ public class Library {
                     return;
                 }
                 console.println("Enter your Customer ID: ");
-                String customerId=console.GetUserInput(2);
+                String customerId=console.GetUserInput();
+                //String customerId="1";
                 Customer customer=null;
                 try{
                     customer = RegisteredCustomers.GetCustomer(Integer.parseInt(customerId));

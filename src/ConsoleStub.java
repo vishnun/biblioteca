@@ -20,9 +20,8 @@ public class ConsoleStub implements Console {
     }
 
     @Override
-    public String GetUserInput(int inputNo) {
-        if(inputNo<0||inputNo>InputList.size()) lines.add("Not a valid Input");
-        return InputList.get(inputNo-1);
+    public String GetUserInput() {
+        return InputList.remove(0);
     }
 
     public void InitializeInputSequence(ArrayList<String> inputListOrder) {
