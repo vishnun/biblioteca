@@ -5,11 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class testLibrary {
-    private int OPTION_SHOWALLBOOKS=1;
-    private int OPTION_RESERVEBOOK=2;
-    private int OPTION_VERIFYLIBRARYNUMBER=3;
-    private int OPTION_EXIT=4;
-    private int OPTION_INVALID=5;
+
     @Test
     public void testWelcomeMessage(){
         ConsoleStub consolestub=new ConsoleStub();
@@ -32,6 +28,7 @@ public class testLibrary {
     public void testValidOptionSelectionMessage() throws IOException {
         Library library=new Library();
         ConsoleStub consolestub=new ConsoleStub();
+        int OPTION_INVALID = 5;
         library.selectOption(OPTION_INVALID,consolestub);
         Assert.assertTrue(consolestub.getLine(1).equals("Please select a Valid Option"));
     }
@@ -39,6 +36,7 @@ public class testLibrary {
     public void testOptionOneDisplayAllBooks() throws IOException {
         Library library=new Library();
         ConsoleStub consolestub=new ConsoleStub();
+        int OPTION_SHOWALLBOOKS = 1;
         library.selectOption(OPTION_SHOWALLBOOKS,consolestub);
         Assert.assertTrue(consolestub.getLine(1).equals("p1"+" Let Us C"+" Dennis Richie"));
         Assert.assertTrue(consolestub.getLine(2).equals("j1"+" Head First Java"+" Kethy Sieria"));
@@ -46,6 +44,7 @@ public class testLibrary {
 
     @Test
     public void testReserveBookSuccessfullyOption()  {
+        int OPTION_RESERVEBOOK=2;
         Library library=new Library();
         ArrayList<String> InputListOrder=new ArrayList<String>();
         InputListOrder.add("Head First Java");
@@ -58,6 +57,7 @@ public class testLibrary {
     }
     @Test
     public void testReserveBookFailedOption() {
+        int OPTION_RESERVEBOOK=2;
         Library library=new Library();
         ArrayList<String> InputListOrder=new ArrayList<String>();
         InputListOrder.add("Head First Java");
@@ -78,6 +78,7 @@ public class testLibrary {
         InputListOrder.add("Vishnu Narang");
         ConsoleStub consolestub=new ConsoleStub();
         consolestub.InitializeInputSequence(InputListOrder);
+        int OPTION_VERIFYLIBRARYNUMBER = 3;
         library.selectOption(OPTION_VERIFYLIBRARYNUMBER,consolestub);
         String YourIdReturned="1";
         Assert.assertEquals(YourIdReturned,consolestub.getLine(2));
@@ -86,6 +87,7 @@ public class testLibrary {
     public void testExitMessage(){
         Library library=new Library();
         ConsoleStub consolestub=new ConsoleStub();
+        int OPTION_EXIT = 4;
         library.selectOption(OPTION_EXIT,consolestub);
         Assert.assertEquals("Thank you. Visit again soon.",consolestub.getLine(1));
     }
