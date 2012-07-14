@@ -11,12 +11,16 @@ public class LibraryApplication {
         Console console=new SystemConsole();
 
         while(true){
-            console.println("\n");
             library.showWelcomeMessage(console);
             console.println("****************************");
             library.DisplayMenu(console);
             console.println("\nEnter your Choice: ");
-            int option=Integer.parseInt(console.GetUserInput());
+            int option=0;
+            try{
+                option=Integer.parseInt(console.GetUserInput());
+            }catch (Exception e){
+                console.println("Invalid Option");
+            }
             library.selectOption(option,console);
             if(option==4)break;
         }
