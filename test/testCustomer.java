@@ -1,17 +1,12 @@
 import junit.framework.Assert;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- * Created with IntelliJ IDEA.
- * User: vishnun
- * Date: 7/13/12
- * Time: 11:03 AM
- * To change this template use File | Settings | File Templates.
- */
 public class testCustomer {
     ArrayList<Customer> customerList= Customer.CUSTOMERLIST;
+
     @Test
     public void testCustomerEquality(){
         Customer vishnu = customerList.get(0);
@@ -28,6 +23,15 @@ public class testCustomer {
     public void testVerifyCustomer(){
         Customer customer=customerList.get(1);
         Assert.assertTrue(customer.IsCustomer(2));
+    }
+    @Test
+    public void testGetBookNameFromCustomer() throws IOException {
+        ConsoleStub consolestub=new ConsoleStub();
+        Customer customer=customerList.get(1);
+        String bookname=customer.GetBookName(consolestub);
+        Assert.assertTrue((consolestub.getLine(1)).equals("Enter Book Name: "));
+        Assert.assertTrue((consolestub.getLine(2)).equals("Head First Java"));
+        Assert.assertEquals("Head First Java",bookname);
     }
 
 }

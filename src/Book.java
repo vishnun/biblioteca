@@ -23,8 +23,7 @@ public class Book {
         Book book = (Book) otherBook;
         if (BookAuthor != null ? !BookAuthor.equals(book.BookAuthor) : book.BookAuthor != null) return false;
         if (BookId != null ? !BookId.equals(book.BookId) : book.BookId != null) return false;
-        if (BookName != null ? !BookName.equals(book.BookName) : book.BookName != null) return false;
-        return true;
+        return !(BookName != null ? !BookName.equals(book.BookName) : book.BookName != null);
     }
 
     @Override
@@ -36,13 +35,13 @@ public class Book {
     }
 
     public String Display() {
-        StringBuffer book=new StringBuffer();
+        StringBuilder book=new StringBuilder();
         book.append(this.BookId);
         book.append(" ");
         book.append(this.BookName);
         book.append(" ");
         book.append(this.BookAuthor);
-        return book.toString();  //To change body of created methods use File | Settings | File Templates.
+        return book.toString();
     }
 
     @Override
@@ -55,7 +54,6 @@ public class Book {
     }
 
     public boolean IsBook(String BookName) {
-        if(! this.BookName.equalsIgnoreCase(BookName)) return false;
-        return true;  //To change body of created methods use File | Settings | File Templates.
+        return this.BookName.equalsIgnoreCase(BookName);
     }
 }

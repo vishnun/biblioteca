@@ -1,0 +1,20 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class ConsoleStub implements Console {
+    private final List<String> lines = new ArrayList<String>();
+
+    public String getLine(int lineNumberOneBased) {
+        return lines.get(lineNumberOneBased - 1);        //console to the test
+    }
+
+    @Override
+    public void println(String s) {   //object to console
+        lines.add(s);
+    }
+
+    @Override
+    public void println(int i) {
+        lines.add(String.valueOf(i));
+    }
+}

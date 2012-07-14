@@ -1,15 +1,6 @@
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-/**
- * Created with IntelliJ IDEA.
- * User: vishnun
- * Date: 7/13/12
- * Time: 12:04 AM
- * To change this template use File | Settings | File Templates.
- */
 public class Customer {
     private int id;
     private String Name;
@@ -26,11 +17,12 @@ public class Customer {
         CUSTOMERLIST.add(new Customer(3,"Aman King"));
     }
 
-    public String GetBookIdFromUser() throws IOException {
-        BufferedReader ReadId=new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter the Book Id: ");
-        String BookId=ReadId.readLine();
-        return BookId;
+    public String GetBookName(Console console) throws IOException {
+        String msg="Enter Book Name: ";
+        String b="Head First Java";
+        console.println(msg);
+        console.println(b);
+        return "Head First Java";
     }
 
     @Override
@@ -38,8 +30,7 @@ public class Customer {
         if (this == otherCustomer) return true;
         if (otherCustomer == null || getClass() != otherCustomer.getClass()) return false;
         Customer customer = (Customer) otherCustomer;
-        if (id != customer.id) return false;
-        return true;
+        return id == customer.id;
     }
 
     @Override
@@ -58,7 +49,6 @@ public class Customer {
     }
 
     public boolean IsCustomer(int CustomerId) {
-        if(this.id!=CustomerId) return false;
-        return true;
+        return this.id == CustomerId;
     }
 }

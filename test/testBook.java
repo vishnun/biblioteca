@@ -8,7 +8,6 @@ public class testBook {
     @Test
     public void testBookEqual(){
         Book java1 = (Book) BookList.get(0);
-        Book c1 =(Book) BookList.get(1);
         Assert.assertEquals(java1, java1);
     }
     @Test
@@ -20,8 +19,7 @@ public class testBook {
     @Test
     public void testDisplay(){
         Book J1= (Book) BookList.get(1);
-        String ExpectedOutput=new String();
-        ExpectedOutput="j1"+" Head First Java"+" Kethy Sieria";
+        String ExpectedOutput="j1"+" Head First Java"+" Kethy Sieria";
         String BookDisplayed= J1.Display();
         Assert.assertEquals(ExpectedOutput,BookDisplayed);
     }

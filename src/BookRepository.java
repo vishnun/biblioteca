@@ -1,12 +1,4 @@
 import java.util.ArrayList;
-
-/**
- * Created with IntelliJ IDEA.
- * User: vishnun
- * Date: 7/12/12
- * Time: 7:21 PM
- * To change this template use File | Settings | File Templates.
- */
 public class BookRepository {
     public static ArrayList<Book> BookList=Book.BOOKLIST;
 

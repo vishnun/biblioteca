@@ -3,16 +3,9 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-/**
- * Created with IntelliJ IDEA.
- * User: vishnun
- * Date: 7/12/12
- * Time: 7:27 PM
- * To change this template use File | Settings | File Templates.
- */
 public class testBookRepository {
     @Test
-    public void testDisplay(){
+    public void testDisplayAllBooks(){
         BookRepository bookRepository=new BookRepository();
         ArrayList<String> booksDiaplayed=new ArrayList<String>();
         booksDiaplayed.add("p1"+" Let Us C"+" Dennis Richie");
@@ -25,6 +18,6 @@ public class testBookRepository {
         BookRepository bookRepository=new BookRepository();
         Book bookReturned=bookRepository.GetBook("Head First Java");
         Book ActualBook=booksAvailable.get(1);
-        Assert.assertEquals(ActualBook,bookReturned);
+        Assert.assertEquals(ActualBook, bookReturned);
     }
 }
