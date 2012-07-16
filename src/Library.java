@@ -4,7 +4,6 @@ public class Library {
 
     private CustomerMenu menu=new CustomerMenu();
     private BookRepository bookRepository=new BookRepository();
-    private CustomerList RegisteredCustomers=new CustomerList();
     public void showWelcomeMessage(Console console) {
         console.println("Welcome to the Library");
     }
@@ -16,44 +15,43 @@ public class Library {
     public void selectOption(int option, Console console) {
         switch (option){
             case 1:
+                console.println("Books Available:");
                 ArrayList <String> listOfBooks=bookRepository.DisplayAllBooks();
                 for (String listOfBook : listOfBooks)
                     console.println(listOfBook);
                 break;
             case 2:
-                console.println("Enter The Book Name: ");
-                String bookname=console.GetUserInput();
-                //String bookname="Head First Java";
-                Book bookToReserve;
-                try{
-                    bookToReserve=bookRepository.GetBook(bookname);
-                }catch (Exception bookNotFound){
-                    console.println(bookNotFound.toString());
-                    return;
-                }
-                console.println("Enter your Customer ID: ");
-                String customerId=console.GetUserInput();
-                //String customerId="1";
-                Customer customer=null;
-                try{
-                    customer = RegisteredCustomers.GetCustomer(Integer.parseInt(customerId));
-                }catch (Exception customerNotRegistered){
-                    console.println(customerNotRegistered.toString());
-                }
-                String message=Register.ReserveBook(bookToReserve,customer);
-                console.println(message);
+                bookReservation(console);
                 break;
             case 3:
-                console.println("Enter Your Name: ");
-                String userName=console.GetUserInput();
-                String librarianMessage=CustomerList.VerifyExistence(userName);
+                String librarianMessage="Please talk to Librarian. Thank you.";
                 console.println(librarianMessage);
                 break;
             case 4:
                 console.println("Thank you. Visit again soon.");
                 break;
             default:
-                console.println("Please select a Valid Option");
+                console.println("Select a valid option!!");
         }
+    }
+
+    private void bookReservation(Console console) {
+        console.println("Enter the Serial Number of the Book: ");
+        int bookSrNo = 0;
+        try{
+            bookSrNo = Integer.parseInt(console.GetUserInput());
+        }catch (Exception wrongInput){
+            console.println("Please Enter a number");
+            return;
+        }
+        Book bookToReserve;
+        try{
+            bookToReserve=bookRepository.GetBook(bookSrNo);
+        }catch (Exception bookNotFound){
+            console.println(bookNotFound.getMessage());
+            return;
+        }
+        String message=Register.ReserveBook(bookToReserve);
+        console.println(message);
     }
 }

@@ -8,16 +8,14 @@ public class BookRepository {
 
     public ArrayList<String> DisplayAllBooks(){
         ArrayList<String> books=new ArrayList<String>();
+        int index=1;
         for(Book book:BookList){
-            books.add(book.Display());
+            books.add(""+ index++ +" " +book.Display());
         }
         return books;
     }
-    public Book GetBook(String name){
-        for(Book book:BookList){
-            if(!book.IsBook(name)) continue; //Based on book name the book verifies that its NAME is 'name'
-            return book;
-        }
-        throw new RuntimeException("Book not found in Repository");
+    public Book GetBook(int SrNo){
+        if(SrNo>0 && SrNo<= BookList.size()) return BookList.get(SrNo-1);
+        throw new RuntimeException("Sorry we don't have that book yet.");
     }
 }

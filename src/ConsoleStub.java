@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
+//try not to mix business logic
+
 public class ConsoleStub implements Console {
     private final List<String> lines = new ArrayList<String>();
     private List<String> InputList=new ArrayList<String>();

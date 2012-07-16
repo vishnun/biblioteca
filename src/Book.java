@@ -28,11 +28,9 @@ public class Book {
 
     public String Display() {
         StringBuilder book=new StringBuilder();
-        book.append(this.BookId);
-        book.append(" ");
-        book.append(this.BookName);
-        book.append(" ");
-        book.append(this.BookAuthor);
+        book.append("\"").append(this.BookName).append("\"");
+        book.append(" -by- ");
+        book.append("\"").append(this.BookAuthor).append("\"");
         return book.toString();
     }
 
@@ -43,9 +41,5 @@ public class Book {
                 ", BookName='" + BookName + '\'' +
                 ", BookAuthor='" + BookAuthor + '\'' +
                 '}';
-    }
-
-    public boolean IsBook(String BookName) {
-        return this.BookName.equalsIgnoreCase(BookName);
     }
 }

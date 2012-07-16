@@ -1,23 +1,20 @@
 import java.util.ArrayList;
 public class Register {
-    Book book;                //Book and customer define an entry in Register
-    Customer customer;
-
+    Book book;
     private static ArrayList<Register> ReservedBooks=new ArrayList<Register>();
 
-    public Register(Book bookAsked, Customer borrower) {   //private
+    private Register(Book bookAsked) {
         book=bookAsked;
-        customer=borrower;
     }
 
-    public static String ReserveBook(Book bookAsked,Customer borrower){
+    public static String ReserveBook(Book bookAsked){
         for(Register register: ReservedBooks){
             if (register.IsBooked(bookAsked)){
-                return "Book Not available at this moment.";
+                return "Sorry we don't have that book yet.";
             }
         }
-        ReservedBooks.add(new Register(bookAsked,borrower));
-        return "Your book has been Reserved Successfully";
+        ReservedBooks.add(new Register(bookAsked));
+        return "Thank You! Enjoy the book.";
     }
     private boolean IsBooked(Book bookAsked){
         return this.book.equals(bookAsked);

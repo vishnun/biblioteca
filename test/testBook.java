@@ -19,13 +19,8 @@ public class testBook {
     @Test
     public void testDisplay(){
         Book J1= (Book) BookList.get(1);
-        String ExpectedOutput="j1"+" Head First Java"+" Kethy Sieria";
+        String ExpectedOutput="\"Head First Java\""+" -by- "+"\"Kethy Sieria\"";
         String BookDisplayed= J1.Display();
         Assert.assertEquals(ExpectedOutput,BookDisplayed);
-    }
-    @Test
-    public void testBookSearchBasedOnName(){
-        Book J1= (Book) BookList.get(1);
-        Assert.assertTrue(J1.IsBook("Head First Java"));
     }
 }

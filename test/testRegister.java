@@ -4,15 +4,12 @@ public class testRegister {
     @Test
     public void testReserveBookSuccessfulMessage(){
         Book Java1=BookRepository.BookList.get(0);
-        Customer vishnu=CustomerList.customerList.get(0);
-        Assert.assertEquals("Your book has been Reserved Successfully",Register.ReserveBook(Java1, vishnu));
+        Assert.assertEquals("Thank You! Enjoy the book.",Register.ReserveBook(Java1));
     }
     @Test
     public void testReserveBookUnSuccessfulMessage(){
         Book Java1=BookRepository.BookList.get(0);
-        Customer vishnu=CustomerList.customerList.get(0);
-        Register.ReserveBook(Java1, vishnu);
-        Customer manali=CustomerList.customerList.get(1);
-        Assert.assertEquals("Book Not available at this moment.",Register.ReserveBook(Java1, manali));
+        Register.ReserveBook(Java1);
+        Assert.assertEquals("Sorry we don't have that book yet.",Register.ReserveBook(Java1));
     }
 }
