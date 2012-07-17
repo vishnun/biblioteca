@@ -1,3 +1,5 @@
+package com.twu28.biblioteca;
+
 import junit.framework.Assert;
 import org.junit.Test;
 
@@ -53,7 +55,7 @@ public class testLibrary {
         consolestub.InitializeInputSequence(InputListOrder);
         String BookReservedSuccessfully="Thank You! Enjoy the book.";
         library.selectOption(OPTION_RESERVEBOOK,consolestub);
-        Assert.assertEquals(consolestub.getLine(2),(BookReservedSuccessfully));
+        Assert.assertEquals(consolestub.getLine(2), (BookReservedSuccessfully));
     }
     @Test
     public void testReserveBookFailedOption() {
