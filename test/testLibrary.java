@@ -48,12 +48,12 @@ public class testLibrary {
         int OPTION_RESERVEBOOK=2;
         Library library=new Library();
         ArrayList<String> InputListOrder=new ArrayList<String>();
-        InputListOrder.add("1");
+        InputListOrder.add("2");
         ConsoleStub consolestub=new ConsoleStub();
         consolestub.InitializeInputSequence(InputListOrder);
         String BookReservedSuccessfully="Thank You! Enjoy the book.";
         library.selectOption(OPTION_RESERVEBOOK,consolestub);
-        Assert.assertTrue(consolestub.getLine(2).equals(BookReservedSuccessfully));
+        Assert.assertEquals(consolestub.getLine(2),(BookReservedSuccessfully));
     }
     @Test
     public void testReserveBookFailedOption() {

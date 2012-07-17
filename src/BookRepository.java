@@ -2,6 +2,7 @@ import java.util.ArrayList;
 public class BookRepository {
     public static ArrayList<Book> BookList=new ArrayList<Book>();
     static {
+        BookList.add(0, new Book("c1", "Harry Potter", "J K Rowling"));
         BookList.add(0, new Book("j1", "Head First Java", "Kethy Sieria"));
         BookList.add(0, new Book("p1", "Let Us C", "Dennis Richie"));
     }

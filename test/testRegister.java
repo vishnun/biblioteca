@@ -3,7 +3,7 @@ import org.junit.Test;
 public class testRegister {
     @Test
     public void testReserveBookSuccessfulMessage(){
-        Book Java1=BookRepository.BookList.get(0);
+        Book Java1=BookRepository.BookList.get(2);
         Assert.assertEquals("Thank You! Enjoy the book.",Register.ReserveBook(Java1));
     }
     @Test
