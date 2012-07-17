@@ -29,6 +29,13 @@ public class Library {
                 console.println(librarianMessage);
                 break;
             case 4:
+                MovieCollection movieCollection= new MovieCollection();
+                ArrayList<String> movies = movieCollection.viewAll();
+                for (String movie : movies) {
+                    console.println(movie);
+                }
+                break;
+            case 5:
                 console.println("Thank you. Visit again soon.");
                 break;
             default:

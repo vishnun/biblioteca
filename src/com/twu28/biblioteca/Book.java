@@ -36,7 +36,7 @@ public class Book {
         book.append("\"").append(this.BookAuthor).append("\"");
         return book.toString();
     }
-
+    /*
     @Override
     public String toString() {
         return "Book{" +
@@ -45,7 +45,7 @@ public class Book {
                 ", BookAuthor='" + BookAuthor + '\'' +
                 '}';
     }
-
+    */
     public String reserveBook() {
         if(this.reserved)
             return "Sorry we don't have that book yet.";

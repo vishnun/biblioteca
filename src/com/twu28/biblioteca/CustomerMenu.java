@@ -6,7 +6,8 @@ public class CustomerMenu {
         menuList.add("1. View All Books");
         menuList.add("2. Reserve a Book");
         menuList.add("3. Check Library number");
-        menuList.add("4. Exit");
+        menuList.add("4. View All Movies");
+        menuList.add("5. Exit");
     }
     public void Display(Console consolestub) {
         for(String item: menuList)

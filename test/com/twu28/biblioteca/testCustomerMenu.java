@@ -12,6 +12,7 @@ public class testCustomerMenu {
         Assert.assertTrue(consolestub.getLine(1).equals("1. View All Books"));
         Assert.assertTrue(consolestub.getLine(2).equals("2. Reserve a Book"));
         Assert.assertTrue(consolestub.getLine(3).equals("3. Check Library number"));
-        Assert.assertTrue(consolestub.getLine(4).equals("4. Exit"));
+        Assert.assertTrue(consolestub.getLine(4).equals("4. View All Movies"));
+        Assert.assertTrue(consolestub.getLine(5).equals("5. Exit"));
     }
 }

@@ -16,7 +16,7 @@ public class LibraryApplication {
             }catch (Exception e){
             }
             library.selectOption(option,console);
-            if(option==4)break;
+            if(option==5)break;
         }
     }
 }

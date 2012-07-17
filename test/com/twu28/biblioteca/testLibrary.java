@@ -23,14 +23,15 @@ public class testLibrary {
         Assert.assertTrue(consolestub.getLine(1).equals("1. View All Books"));
         Assert.assertTrue(consolestub.getLine(2).equals("2. Reserve a Book"));
         Assert.assertTrue(consolestub.getLine(3).equals("3. Check Library number"));
-        Assert.assertTrue(consolestub.getLine(4).equals("4. Exit"));
+        Assert.assertTrue(consolestub.getLine(4).equals("4. View All Movies"));
+        Assert.assertTrue(consolestub.getLine(5).equals("5. Exit"));
     }
 
     @Test
     public void testValidOptionSelectionMessage() throws IOException {
         Library library=new Library();
         ConsoleStub consolestub=new ConsoleStub();
-        int OPTION_INVALID = 5;
+        int OPTION_INVALID = 6;
         library.selectOption(OPTION_INVALID,consolestub);
         Assert.assertTrue(consolestub.getLine(1).equals("Select a valid option!!"));
     }
@@ -73,10 +74,19 @@ public class testLibrary {
     }
 
     @Test
+    public void testViewMovies(){
+        Library library=new Library();
+        ConsoleStub consoleStub=new ConsoleStub();
+        int OPTION_VIEWMOVIES=4;
+        library.selectOption(OPTION_VIEWMOVIES,consoleStub);
+        Assert.assertTrue(consoleStub.getLine(1).equals("The Shawshank Redemption"+"\t"+"Frank Darabont"+"\t"+"9/10"));
+        Assert.assertTrue(consoleStub.getLine(2).equals("The Dark Knight"+"\t"+"Christopher Nolan"+"\t"+"8/10"));
+    }
+    @Test
     public void testExitMessage(){
         Library library=new Library();
         ConsoleStub consolestub=new ConsoleStub();
-        int OPTION_EXIT = 4;
+        int OPTION_EXIT = 5;
         library.selectOption(OPTION_EXIT,consolestub);
         Assert.assertEquals("Thank you. Visit again soon.",consolestub.getLine(1));
     }
