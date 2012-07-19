@@ -1,6 +1,5 @@
 package com.twu28.biblioteca;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,8 +24,13 @@ public class ConsoleStub implements Console {
     }
 
     @Override
-    public String GetUserInput() {
+    public String readInput() {
         return inputList.remove(0);
+    }
+
+    @Override
+    public String readPassword() {
+        return readInput();
     }
 
     public void InitializeInputSequence(ArrayList<String> inputListOrder) {

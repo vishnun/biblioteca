@@ -15,7 +15,7 @@ public class SystemConsole implements Console {
     }
 
     @Override
-    public String GetUserInput() {
+    public String readInput() {
         BufferedReader input=new BufferedReader(new InputStreamReader(System.in));
         try {
             return input.readLine();
@@ -23,5 +23,10 @@ public class SystemConsole implements Console {
             e.printStackTrace();
             return "Cannot Take Input";
         }
+    }
+
+    @Override
+    public String readPassword() {
+        return readInput();
     }
 }

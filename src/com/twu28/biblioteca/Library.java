@@ -5,6 +5,8 @@ public class Library {
 
     private CustomerMenu menu=new CustomerMenu();
     private BookRepository bookRepository=new BookRepository();
+    private String currentUser="";
+
     public void showWelcomeMessage(Console console) {
         console.println("Welcome to the Library");
     }
@@ -16,30 +18,70 @@ public class Library {
     public void selectOption(int option, Console console) {
         switch (option){
             case 1:
-                console.println("Books Available:");
-                ArrayList <String> listOfBooks=bookRepository.DisplayAllBooks();
-                for (String listOfBook : listOfBooks)
-                    console.println(listOfBook);
+                initiateLoginProcess(console);
                 break;
             case 2:
-                bookReservation(console);
+                displayAllBooks(console);
                 break;
             case 3:
-                String librarianMessage="Please talk to Librarian. Thank you.";
-                console.println(librarianMessage);
+                bookReservation(console);
                 break;
             case 4:
-                MovieCollection movieCollection= new MovieCollection();
-                ArrayList<String> movies = movieCollection.viewAll();
-                for (String movie : movies) {
-                    console.println(movie);
-                }
+                getLibraryNumber(console);
                 break;
             case 5:
+                displayAllMovies(console);
+                break;
+            case 6:
                 console.println("Thank you. Visit again soon.");
+                break;
+            case 7:
+                logout(console);
                 break;
             default:
                 console.println("Select a valid option!!");
+        }
+    }
+
+    private void logout(Console console) {
+        console.println("Logged Out");
+        currentUser="";
+    }
+
+    private void displayAllMovies(Console console) {
+        MovieCollection movieCollection= new MovieCollection();
+        ArrayList<String> movies = movieCollection.viewAll();
+        for (String movie : movies) {
+            console.println(movie);
+        }
+    }
+
+    private void getLibraryNumber(Console console) {
+        String librarianMessage="Please talk to Librarian. Thank you.";
+        if(!currentUser.isEmpty()){
+            console.println("Your Library Number is: "+currentUser);
+            return;
+        }
+        console.println(librarianMessage);
+    }
+
+    private void displayAllBooks(Console console) {
+        console.println("Books Available:");
+        ArrayList<String> listOfBooks=bookRepository.DisplayAllBooks();
+        for (String listOfBook : listOfBooks)
+            console.println(listOfBook);
+    }
+
+    private void initiateLoginProcess(Console console) {
+        console.println("Enter Your username: ");
+        String username=console.readInput();
+        console.println("Enter Your password: ");
+        String password = console.readPassword();
+        try{
+            currentUser= User.authenticate(username, password);
+            console.println("Login Successful");
+        }catch (Exception UnsuccessfulLogin){
+            console.println(UnsuccessfulLogin.getMessage());
         }
     }
 
@@ -47,7 +89,7 @@ public class Library {
         console.println("Enter the Serial Number of the Book: ");
         int bookSrNo = 0;
         try{
-            bookSrNo = Integer.parseInt(console.GetUserInput());
+            bookSrNo = Integer.parseInt(console.readInput());
         }catch (Exception wrongInput){
             console.println("Please Enter a number");
             return;

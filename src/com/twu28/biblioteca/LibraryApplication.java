@@ -4,6 +4,7 @@ public class LibraryApplication {
     public static void main(String args[]){
         Library library=new Library();
         Console console=new SystemConsole();
+        int EXIT=6;
         while(true){
             console.println("\n****************************");
             library.showWelcomeMessage(console);
@@ -12,11 +13,11 @@ public class LibraryApplication {
             console.println("Enter your Choice: ");
             int option=0;
             try{
-                option=Integer.parseInt(console.GetUserInput());
+                option=Integer.parseInt(console.readInput());
             }catch (Exception e){
             }
             library.selectOption(option,console);
-            if(option==5)break;
+            if(option==EXIT)break;
         }
     }
 }
