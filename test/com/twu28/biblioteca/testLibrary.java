@@ -115,6 +115,23 @@ public class testLibrary {
 
     private ConsoleStub executeLogin(Library library, ConsoleStub consoleStub) {
         ArrayList<String> InputListOrder=new ArrayList<String>();
+        InputListOrder.add("222-2222");
+        InputListOrder.add("222-2222");
+        consoleStub.InitializeInputSequence(InputListOrder);
+        int login=1;
+        library.selectOption(login,consoleStub);
+        return consoleStub;
+    }
+
+    @Test
+    public void testLibrarianSuccessfulLogin(){
+        Library library=new Library();
+        ConsoleStub consoleStub=new ConsoleStub();
+        consoleStub = executeLibrarianLogin(library,consoleStub);
+        Assert.assertEquals("Welcome Librarian.",consoleStub.getLine(3));
+    }
+    private ConsoleStub executeLibrarianLogin(Library library, ConsoleStub consoleStub) {
+        ArrayList<String> InputListOrder=new ArrayList<String>();
         InputListOrder.add("111-1111");
         InputListOrder.add("111-1111");
         consoleStub.InitializeInputSequence(InputListOrder);

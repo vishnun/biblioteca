@@ -6,6 +6,7 @@ public class Library {
     private CustomerMenu menu=new CustomerMenu();
     private BookRepository bookRepository=new BookRepository();
     private String currentUser="";
+    private String librarian="111-1111";
 
     public void showWelcomeMessage(Console console) {
         console.println("Welcome to the Library");
@@ -44,6 +45,10 @@ public class Library {
     }
 
     private void logout(Console console) {
+        if(currentUser.isEmpty()){
+            console.println("You need to login first.");
+            return;
+        }
         console.println("Logged Out");
         currentUser="";
     }
@@ -79,6 +84,10 @@ public class Library {
         String password = console.readPassword();
         try{
             currentUser= User.authenticate(username, password);
+            if(currentUser.equals(librarian)){
+                console.println("Welcome Librarian.");
+                return;
+            }
             console.println("Login Successful");
         }catch (Exception UnsuccessfulLogin){
             console.println(UnsuccessfulLogin.getMessage());
