@@ -1,12 +1,30 @@
 package com.twu28.biblioteca;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Library {
-
-    private CustomerMenu menu=new CustomerMenu();
-    private BookRepository bookRepository=new BookRepository();
+public class Library implements LoginAndLogoutCommandObserver {
     private String currentUser="";
     private String librarian="111-1111";
+    private CustomerMenu menu=new CustomerMenu();
+    private BookRepository bookRepository=new BookRepository();
+    private MovieCollection movieCollection= new MovieCollection();
+    private List<LibraryObserver> libraryObservers=new ArrayList<LibraryObserver>();
+
+    private List<Command> menuActions=new ArrayList<Command>();
+
+    public Library(){
+        addMenuActions();
+    }
+
+    private void addMenuActions() {
+        menuActions.add(new LoginCommand(this,librarian));
+        menuActions.add(new DisplayAllBooksCommand(bookRepository));
+        menuActions.add(new BookReservationCommand(bookRepository));
+        menuActions.add(new GetLibraryCommand(this));
+        menuActions.add(new DisplayAllMoviesCommand(movieCollection));
+        menuActions.add(new ExitCommand());
+        menuActions.add(new LogoutCommand(this));
+    }
 
     public void showWelcomeMessage(Console console) {
         console.println("Welcome to the Library");
@@ -16,99 +34,32 @@ public class Library {
         menu.Display(console);
     }
 
+    private void notifyUserLoggedInToObservers(String username) {
+        for (LibraryObserver observer : libraryObservers) {
+            observer.updateCurrentUserLoggedIn(username);
+        }
+    }
+
     public void selectOption(int option, Console console) {
-        switch (option){
-            case 1:
-                initiateLoginProcess(console);
-                break;
-            case 2:
-                displayAllBooks(console);
-                break;
-            case 3:
-                bookReservation(console);
-                break;
-            case 4:
-                getLibraryNumber(console);
-                break;
-            case 5:
-                displayAllMovies(console);
-                break;
-            case 6:
-                console.println("Thank you. Visit again soon.");
-                break;
-            case 7:
-                logout(console);
-                break;
-            default:
-                console.println("Select a valid option!!");
-        }
-    }
-
-    private void logout(Console console) {
-        if(currentUser.isEmpty()){
-            console.println("You need to login first.");
+        if(isInvalidOption(option)){
+            console.println("Select a valid option!!");
             return;
         }
-        console.println("Logged Out");
-        currentUser="";
+        Command command=menuActions.get(option-1);
+        command.execute(console);
+        notifyUserLoggedInToObservers(currentUser);
     }
 
-    private void displayAllMovies(Console console) {
-        MovieCollection movieCollection= new MovieCollection();
-        ArrayList<String> movies = movieCollection.viewAll();
-        for (String movie : movies) {
-            console.println(movie);
-        }
+    private boolean isInvalidOption(int option) {
+        return (option-1) < 0 || (option-1) >menuActions.size();
     }
 
-    private void getLibraryNumber(Console console) {
-        String librarianMessage="Please talk to Librarian. Thank you.";
-        if(!currentUser.isEmpty()){
-            console.println("Your Library Number is: "+currentUser);
-            return;
-        }
-        console.println(librarianMessage);
+    @Override
+    public void updateLoginStatus(String username) {
+        this.currentUser=username;
     }
 
-    private void displayAllBooks(Console console) {
-        console.println("Books Available:");
-        ArrayList<String> listOfBooks=bookRepository.DisplayAllBooks();
-        for (String listOfBook : listOfBooks)
-            console.println(listOfBook);
-    }
-
-    private void initiateLoginProcess(Console console) {
-        console.println("Enter Your username: ");
-        String username=console.readInput();
-        console.println("Enter Your password: ");
-        String password = console.readPassword();
-        try{
-            currentUser= User.authenticate(username, password);
-            if(currentUser.equals(librarian)){
-                console.println("Welcome Librarian.");
-                return;
-            }
-            console.println("Login Successful");
-        }catch (Exception UnsuccessfulLogin){
-            console.println(UnsuccessfulLogin.getMessage());
-        }
-    }
-
-    private void bookReservation(Console console) {
-        console.println("Enter the Serial Number of the Book: ");
-        int bookSrNo = 0;
-        try{
-            bookSrNo = Integer.parseInt(console.readInput());
-        }catch (Exception wrongInput){
-            console.println("Please Enter a number");
-            return;
-        }
-        try{
-            String message=bookRepository.reserveBook(bookSrNo);
-            console.println(message);
-        }catch (Exception bookNotFound){
-            console.println(bookNotFound.getMessage());
-        }
-
+    public void registerObserver(LibraryObserver observer) {
+        this.libraryObservers.add(observer);
     }
 }
