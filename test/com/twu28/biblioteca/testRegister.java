@@ -3,7 +3,7 @@ package com.twu28.biblioteca;
 import junit.framework.Assert;
 import org.junit.Test;
 
-public class testUser {
+public class testRegister {
     @Test
     public void testAuthenticateUser(){
         Assert.assertEquals("111-1111", Register.authenticate("111-1111", "111-1111"));
