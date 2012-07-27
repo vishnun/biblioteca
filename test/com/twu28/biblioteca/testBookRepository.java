@@ -13,14 +13,14 @@ public class testBookRepository {
         booksDiaplayed.add("1 \"Let Us C\""+" -by- "+"\"Dennis Richie\"");
         booksDiaplayed.add("2 \"Head First Java\""+" -by- "+"\"Kethy Sieria\"");
         booksDiaplayed.add("3 \"Harry Potter\""+" -by- "+"\"J K Rowling\"");
-        Assert.assertEquals(booksDiaplayed, bookRepository.DisplayAllBooks());
+        Assert.assertEquals(booksDiaplayed, bookRepository.displayAllBooks());
     }
     @Test
     public void testGetBook(){
         BookRepository bookRepository=new BookRepository();
-        com.twu28.biblioteca.Book bookReturned=bookRepository.GetBook(1);
-        com.twu28.biblioteca.Book ActualBook= BookRepository.BookList.get(0);
-        Assert.assertEquals(ActualBook, bookReturned);
+        com.twu28.biblioteca.Book bookReturned=bookRepository.getBook(2);
+        com.twu28.biblioteca.Book ActualBook=new Book("j1", "Head First Java", "Kethy Sieria");
+        Assert.assertTrue(ActualBook.equals(bookReturned));
     }
     @Test
     public void testReserveBookSuccessfulMessage(){

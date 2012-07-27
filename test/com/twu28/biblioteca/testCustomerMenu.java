@@ -8,7 +8,7 @@ public class testCustomerMenu {
     public void testMenuDisplay(){
         ConsoleStub consolestub=new ConsoleStub();
         CustomerMenu menu=new CustomerMenu();
-        menu.Display(consolestub);
+        menu.display(consolestub);
         Assert.assertTrue(consolestub.getLine(1).equals("1. Login"));
         Assert.assertTrue(consolestub.getLine(2).equals("2. View All Books"));
         Assert.assertTrue(consolestub.getLine(3).equals("3. Reserve a Book"));

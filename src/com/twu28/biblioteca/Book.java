@@ -29,7 +29,7 @@ public class Book {
         return result;
     }
 
-    public String Display() {
+    public String display() {
         StringBuilder book=new StringBuilder();
         book.append("\"").append(this.BookName).append("\"");
         book.append(" -by- ");

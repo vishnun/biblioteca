@@ -19,7 +19,7 @@ public class testLibrary {
     public void testMenuDisplay(){
         ConsoleStub consolestub=new ConsoleStub();
         Library library=new Library();
-        library.DisplayMenu(consolestub);
+        library.displayMenu(consolestub);
         AssertMenu(consolestub);
     }
 
@@ -63,7 +63,7 @@ public class testLibrary {
         ArrayList<String> InputListOrder=new ArrayList<String>();
         InputListOrder.add("2");
         ConsoleStub consolestub=new ConsoleStub();
-        consolestub.InitializeInputSequence(InputListOrder);
+        consolestub.initializeInputSequence(InputListOrder);
         String BookReservedSuccessfully="Thank You! Enjoy the book.";
         library.selectOption(reserveBook,consolestub);
         Assert.assertEquals(consolestub.getLine(2), (BookReservedSuccessfully));
@@ -76,7 +76,7 @@ public class testLibrary {
         InputListOrder.add("1");
         InputListOrder.add("1");
         ConsoleStub consolestub=new ConsoleStub();
-        consolestub.InitializeInputSequence(InputListOrder);
+        consolestub.initializeInputSequence(InputListOrder);
         String NotAvailableMessage="Sorry we don't have that book yet.";
         library.selectOption(reserveBook,consolestub);//Reserve Book
         library.selectOption(reserveBook,consolestub);//Again Reserve It : Should say already reserved
@@ -117,7 +117,7 @@ public class testLibrary {
         ArrayList<String> InputListOrder=new ArrayList<String>();
         InputListOrder.add("222-2222");
         InputListOrder.add("222-2222");
-        consoleStub.InitializeInputSequence(InputListOrder);
+        consoleStub.initializeInputSequence(InputListOrder);
         int login=1;
         library.selectOption(login,consoleStub);
         return consoleStub;
@@ -134,7 +134,7 @@ public class testLibrary {
         ArrayList<String> InputListOrder=new ArrayList<String>();
         InputListOrder.add("111-1111");
         InputListOrder.add("111-1111");
-        consoleStub.InitializeInputSequence(InputListOrder);
+        consoleStub.initializeInputSequence(InputListOrder);
         int login=1;
         library.selectOption(login,consoleStub);
         return consoleStub;
@@ -147,7 +147,7 @@ public class testLibrary {
         ArrayList<String> InputListOrder=new ArrayList<String>();
         InputListOrder.add("111-1111");
         InputListOrder.add("Vishnu");
-        consoleStub.InitializeInputSequence(InputListOrder);
+        consoleStub.initializeInputSequence(InputListOrder);
         int login=1;
         library.selectOption(login,consoleStub);
         Assert.assertEquals("Login Un-Successful",consoleStub.getLine(3));
@@ -161,7 +161,7 @@ public class testLibrary {
         ArrayList<String> InputListOrder=new ArrayList<String>();
         InputListOrder.add("111-1111");
         InputListOrder.add("111-1111");
-        consoleStub.InitializeInputSequence(InputListOrder);
+        consoleStub.initializeInputSequence(InputListOrder);
         library.selectOption(login,consoleStub);
         library.selectOption(GetLibraryNumber,consoleStub);
         Assert.assertEquals("Your Library Number is: 111-1111",consoleStub.getLine(4));

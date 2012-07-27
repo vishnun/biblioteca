@@ -11,7 +11,7 @@ public class CustomerMenu {
         menuList.add("6. Exit");
         menuList.add("7. Logout");
     }
-    public void Display(Console consolestub) {
+    public void display(Console consolestub) {
         for(String item: menuList)
             consolestub.println(item);
     }

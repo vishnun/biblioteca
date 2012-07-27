@@ -1,9 +1,14 @@
 package com.twu28.biblioteca;
 import java.util.ArrayList;
 public class MovieCollection {
-    public static ArrayList<Movie> movieList=new ArrayList<Movie>();
-    private static int UNRATED=-1;
-    static {
+    public ArrayList<Movie> movieList=new ArrayList<Movie>();
+    private static final int UNRATED=-1;
+
+    public MovieCollection() {
+        initializeMovieList();
+    }
+
+    private void initializeMovieList() {
         movieList.add(new Movie("The Shawshank Redemption","Frank Darabont",9));
         movieList.add(new Movie("The Dark Knight","Christopher Nolan",8));
         movieList.add(new Movie("Sholay","Ramesh Sippy",UNRATED));

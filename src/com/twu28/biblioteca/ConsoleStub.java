@@ -33,7 +33,7 @@ public class ConsoleStub implements Console {
         return readInput();
     }
 
-    public void InitializeInputSequence(ArrayList<String> inputListOrder) {
+    public void initializeInputSequence(ArrayList<String> inputListOrder) {
         for (String input : inputListOrder) {
             inputList.add(input);
         }

@@ -24,11 +24,11 @@ public class LoginCommand implements Command {
         String password = console.readPassword();
         String currentUser="";
         try{
-            currentUser = User.authenticate(username, password);
+            currentUser = Register.authenticate(username, password);
             displayLoginMessage(console, currentUser);
 
-        }catch (Exception UnsuccessfulLogin){
-            console.println(UnsuccessfulLogin.getMessage());
+        }catch (Exception unsuccessfullogin){
+            console.println(unsuccessfullogin.getMessage());
             currentUser="";
         }
         notifyUserLoggedInToObservers(currentUser);

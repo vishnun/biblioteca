@@ -12,9 +12,8 @@ public class DisplayAllBooksCommand implements Command {
     @Override
     public void execute(Console console) {
         console.println("Books Available:");
-        ArrayList<String> listOfBooks=bookRepository.DisplayAllBooks();
+        ArrayList<String> listOfBooks=bookRepository.displayAllBooks();
         for (String listOfBook : listOfBooks)
             console.println(listOfBook);
-
     }
 }

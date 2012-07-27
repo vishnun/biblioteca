@@ -9,12 +9,12 @@ public class LibraryApplication {
             console.println("\n****************************");
             library.showWelcomeMessage(console);
             console.println("****************************");
-            library.DisplayMenu(console);
+            library.displayMenu(console);
             console.println("Enter your Choice: ");
             int option=0;
             try{
                 option=Integer.parseInt(console.readInput());
-            }catch (Exception e){
+            }catch (Exception ignored){
             }
             library.selectOption(option,console);
             if(option==EXIT)break;

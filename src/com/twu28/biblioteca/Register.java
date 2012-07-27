@@ -2,16 +2,16 @@ package com.twu28.biblioteca;
 
 import java.util.*;
 
-public class User {
+public class Register {
     private static Map<String,String> usernameToPasswordMap = new HashMap<String, String>();
-    static {
+
+    public Register() {
         usernameToPasswordMap.put("111-1111","111-1111");
         usernameToPasswordMap.put("222-2222","222-2222");
         usernameToPasswordMap.put("333-3333","333-3333");
         usernameToPasswordMap.put("444-4444","444-4444");
         usernameToPasswordMap.put("555-5555","555-5555");
     }
-
 
     public static String authenticate(String username, String password) {
         Set userSet=usernameToPasswordMap.entrySet();
