@@ -23,7 +23,7 @@ public class Library implements LoginAndLogoutCommandObserver {
         menuActions.add(new LoginCommand(this, librarianUsername));
         menuActions.add(new DisplayAllBooksCommand(bookRepository));
         menuActions.add(new BookReservationCommand(bookRepository));
-        menuActions.add(new GetLibraryCommand(this));
+        menuActions.add(new GetLibraryNumberCommand(this));
         menuActions.add(new DisplayAllMoviesCommand(movieCollection));
         menuActions.add(new ExitCommand());
         menuActions.add(new LogoutCommand(this));

@@ -1,9 +1,9 @@
 package com.twu28.biblioteca;
 
-public class GetLibraryCommand implements Command, LibraryObserver {
+public class GetLibraryNumberCommand implements Command, LibraryObserver {
     private String currentUser="";
 
-    public GetLibraryCommand(Library library) {
+    public GetLibraryNumberCommand(Library library) {
         library.registerObserver(this);
     }
 

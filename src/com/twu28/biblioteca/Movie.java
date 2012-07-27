@@ -24,10 +24,8 @@ public class Movie {
     }
 
     private String rated() {
-
         if(this.rating>=0)
             return ""+this.rating+"/10";
         return "N/A";
-
     }
 }

@@ -6,9 +6,11 @@ import java.util.List;
 public class LogoutCommand implements Command,LibraryObserver {
     private String currentUser="";
     private List<LoginAndLogoutCommandObserver> observers =new ArrayList<LoginAndLogoutCommandObserver>();
+
     public LogoutCommand(Library library) {
         registerObserver(library);
     }
+
     private void registerObserver(Library library){
         library.registerObserver(this);
         this.observers.add(library);
@@ -24,6 +26,7 @@ public class LogoutCommand implements Command,LibraryObserver {
         currentUser="";
         notifyUserLoggedOutToObservers(currentUser);
     }
+
     private void notifyUserLoggedOutToObservers(String username) {
         for (LoginAndLogoutCommandObserver observer : observers) {
             observer.updateLoginStatus(username);

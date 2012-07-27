@@ -16,8 +16,13 @@ public class BookRepository {
         return books;
     }
     public Book getBook(int SrNo){
-        if(SrNo>0 && SrNo<= BookList.size()) return BookList.get(SrNo-1);
+        Integer index=SrNo-1;
+        if(bookExists(index)) return BookList.get(index);
         throw new RuntimeException("Sorry we don't have that book yet.");
+    }
+
+    private boolean bookExists(Integer index) {
+        return index>=0 && index< BookList.size();
     }
 
     public String reserveBook(int SrNo) {
@@ -26,7 +31,7 @@ public class BookRepository {
         return book.reserveBook();
     }
 
-    public void initializeBookList() {
+    private void initializeBookList() {
         BookList.removeAll(BookList);
         BookList.add(0, new Book("c1", "Harry Potter", "J K Rowling"));
         BookList.add(0, new Book("j1", "Head First Java", "Kethy Sieria"));

@@ -10,11 +10,11 @@ public class ConsoleStub implements Console {
     private List<String> inputList =new ArrayList<String>();
 
     public String getLine(int lineNumberOneBased) {
-        return lines.get(lineNumberOneBased - 1);        //console to the test
+        return lines.get(lineNumberOneBased - 1);
     }
 
     @Override
-    public void println(String s) {   //object to console
+    public void println(String s) {
         lines.add(s);
     }
 
